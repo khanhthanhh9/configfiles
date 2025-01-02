@@ -15,7 +15,10 @@ vim.cmd([[
 
 local keymap = vim.keymap -- for conciseness
 keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/airutils/tmux-sessionizer<CR>", { desc = "Run tmux-sessionizer in a new tmux window" })
-keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("n", "<C-s>", "<cmd>silent !tmux neww ~/airutils/tmux-snip<CR>", { desc = "Run snippet for saving code" })
+-- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("i", "jk", "[]<Left>", { desc = "Fast way to enter bracket" })
+keymap.set("i", "kj", "{}<Left>",{ desc = "Fast way to enter braces" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
