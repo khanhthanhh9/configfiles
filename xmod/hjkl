@@ -7,3 +7,5 @@ keysym i = i I Home
 keysym o = o O End
 keysym u = u U Prior
 keysym p = p P Next
+keycode 9 = Escape NoSymbol Mode_switch asciitilde
+
