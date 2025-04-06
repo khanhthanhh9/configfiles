@@ -102,3 +102,14 @@ bindkey -s ^t "~/airutils/tmux-cht.sh\n"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# bun completions
+[ -s "/home/aircollides/.bun/_bun" ] && source "/home/aircollides/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

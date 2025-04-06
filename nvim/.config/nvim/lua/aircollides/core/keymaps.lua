@@ -11,6 +11,10 @@ vim.cmd([[
   nnoremap <leader>Y gg"+yG
   vnoremap J :m '>+1<CR>gv=gv
   vnoremap K :m '<-2<CR>gv=gv
+  nnoremap <silent> [b :bprevious<CR>
+  nnoremap <silent> ]b :bnext<CR>
+  nnoremap <silent> [B :bfirst<CR>
+  nnoremap <silent> ]B :blast<CR>
   ]])
 local keymap = vim.keymap -- for conciseness
 
