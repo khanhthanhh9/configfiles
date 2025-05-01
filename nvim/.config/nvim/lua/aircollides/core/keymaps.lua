@@ -1,10 +1,25 @@
 vim.g.mapleader = " "
+vim.keymap.set("n", "<leader><leader>s", function()
+	-- Adjust the module name to wherever you define your snippets
+	local snippet_module = "aircollides.plugins.luasnip" -- example: `lua/snippets.lua`
+
+	-- Unload and reload
+	package.loaded[snippet_module] = nil
+	require(snippet_module)
+
+	print("Snippets reloaded!")
+end, { desc = "Reload LuaSnip snippets" })
 
 vim.cmd([[
   nnoremap <C-p> :GFiles<CR>
   nnoremap <leader>pf :Files<CR>
-  nnoremap <C-j> :cnext<CR>
-  nnoremap <C-k> :cprev<CR>
+  nnoremap j  jzz
+  nnoremap k  kzz
+  nnoremap <C-d>  <C-d>zz
+  nnoremap <C-u>  <C-u>zz
+
+  " nnoremap <C-j> :cnext<CR>
+  " nnoremap <C-k> :cprev<CR>
   vnoremap <leader>p "_dP
   vnoremap <leader>y "+y
   nnoremap <leader>y "+y
@@ -18,12 +33,13 @@ vim.cmd([[
   ]])
 local keymap = vim.keymap -- for conciseness
 
-keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/airutils/tmux-sessionizer<CR>", { desc = "Run tmux-sessionizer in a new tmux window" }) 
+keymap.set(
+	"n",
+	"<C-f>",
+	"<cmd>silent !tmux neww ~/airutils/tmux-sessionizer<CR>",
+	{ desc = "Run tmux-sessionizer in a new tmux window" }
+)
 keymap.set("n", "<C-s>", "<cmd>silent !tmux neww ~/airutils/tmux-snip<CR>", { desc = "Run snippet for saving code" })
-
--- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
-keymap.set("i", "jk", "[]<Left>", { desc = "Fast way to enter bracket" })
-keymap.set("i", "kj", "{}<Left>",{ desc = "Fast way to enter braces" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 

@@ -3,27 +3,50 @@ keysym h = h H Left
 keysym l = l L Right
 keysym k = k K Up
 keysym j = j J Down
-keysym i = i I Home
-keysym o = o O End
-keysym u = u U Prior
-keysym p = p P Next
-keysym t = t T asciitilde
 keysym x = x X BackSpace
-keycode  10 = plus 1 plus 1
-keycode  11 = bracketleft 2 bracketleft 2
-keycode  12 = braceleft 3 braceleft 3
-keycode  13 = parenleft 4 parenleft 4
-keycode  14 = ampersand 5 ampersand 5
-keycode  15 = equal 6 equal 6 dead_circumflex dead_circumflex dead_circumflex 
-keycode  16 = parenright 7 parenright 7 
-keycode  17 = braceright 8 braceright 8 
-keycode  18 = bracketright 9 bracketright 9 dead_grave dead_breve dead_grave
-keycode  19 = asterisk 0 asterisk 0
-keycode  20 = exclam percent exclam percent
-keycode  21 = bar grave bar grave dead_tilde NoSymbol dead_tilde
-keycode  34 =  minus underscore minus underscore
-keycode  35 = at asciicircum at asciicircum 
-keycode  51 = backslash numbersign backslash numbersign
-keycode  49 = dollar asciitilde dollar asciitilde dead_grave dead_tilde dead_grave
-keycode 48 = apostrophe quotedbl underscore underscore
+
+! Caps Lock + u = [
+keysym u = u U bracketleft
+
+! Caps Lock + i = ]
+keysym i = i I bracketright
+
+
+! Caps Lock + e = =
+keysym e = e E equal
+
+! Caps Lock + ; = _
+keysym semicolon = semicolon colon underscore
+
+! Caps Lock + z/x/c/v = Page_Up / Home / End / Page_Down
+keysym z = z Z Page_Up
+keysym x = x X Home
+keysym c = c C End
+! Caps Lock + 2 = [
+keysym 2 = 2 at bracketleft
+
+! Caps Lock + 9 = ]
+keysym 9 = 9 parenleft bracketright
+
+! Caps Lock + 3 = {
+keysym 3 = 3 numbersign braceleft
+
+! Caps Lock + 8 = }
+keysym 8 = 8 asterisk braceright
+
+! Caps Lock + 4 = (
+keysym 4 = 4 dollar parenleft
+
+! Caps Lock + 7 = )
+keysym 7 = 7 ampersand parenright
+keysym v = v V Next
+
+! Caps Lock + 6 = =
+keysym 6 = 6 asciicircum equal
+
+! Caps Lock + t = |
+keysym t = t T bar
+
+! Caps Lock + r = \
+keysym r = r R backslash
 
