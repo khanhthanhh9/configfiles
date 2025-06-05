@@ -115,16 +115,25 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
-# vim dawg
-bindkey -v
 # bindkey ^R history-incremental-search-backward 
 # bindkey ^S history-incremental-search-forward
 # bindkey ^F ~/.dotfiles/airutils/tmux-sessionizer
 tmux_sessionizer() {
   ~/airutils/tmux-sessionizer
 }
+
+cheat_sheet() {
+  ~/airutils/tmux-cht.sh
+}
+
+# vim dawg
+bindkey -v
+
 zle -N tmux_sessionizer
+zle -N cheat_sheet
+
 bindkey '^F' tmux_sessionizer
+bindkey '^T' cheat_sheet
 
 ## Starting tmux automatically
 tmux

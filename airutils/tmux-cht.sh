@@ -7,10 +7,12 @@ selected=$(echo -e "$languages\n$core_utils" | fzf)
 read -p "GIMME YOUR QUERY: " query
 
 if echo "$languages" | grep -qs "$selected"; then
-  tmux split-window -p 22 -h -l 82% bash -c "curl cht.sh/$selected/$(echo "$query" | tr " " "+") | less"
+  # tmux split-window -p 22 -h -l 82% bash -c "curl cht.sh/$selected/$(echo "$query" | tr " " "+") | less"
+   tmux neww bash -c "curl cht.sh/$selected/$(echo "$query" | tr " " "+") | less"
   echo "language selected"
 else
-  tmux split-window -p 22 -h bash -c "curl cht.sh/$selected~$query | less"
+  # tmux split-window -p 22 -h bash -c "curl cht.sh/$selected~$query | less"
+   tmux neww bash -c "curl cht.sh/$selected~$query | less"
   echo "core selected"
 fi
 

@@ -39,6 +39,13 @@ keymap.set(
 	"<cmd>silent !tmux neww ~/airutils/tmux-sessionizer<CR>",
 	{ desc = "Run tmux-sessionizer in a new tmux window" }
 )
+
+keymap.set(
+	"n",
+	"<C-T>",
+	"<cmd>silent !tmux neww ~/airutils/tmux-cht.sh<CR>",
+	{ desc = "Run tmux-cheatsheet in a new tmux window" }
+)
 keymap.set("n", "<C-s>", "<cmd>silent !tmux neww ~/airutils/tmux-snip<CR>", { desc = "Run snippet for saving code" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
