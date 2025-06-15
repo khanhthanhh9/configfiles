@@ -136,6 +136,55 @@ cheat_sheet() {
   ~/airutils/tmux-cht.sh
 }
 
+generate_password() {
+  echo "Generate password, please enter the name of the file "
+
+  # Check for filename argument
+  if [ -z "$1" ]; then
+    echo "Error: No filename provided"
+    return 1
+  fi
+
+  local filename="$1"
+
+  # Generate password
+  # if ! head /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 100 | tee "$filename" > /dev/null; then
+  if ! head /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 100 | tee "$filename"; then
+    echo "Error: Failed to generate password"
+    return 1
+  fi
+  echo
+
+  echo "Encrypting the message..."
+  if ! ansible-vault encrypt "$filename"; then
+    echo "Encryption failed. Exiting."
+    return 1
+  fi
+
+  echo "Moving file into GitHub repository..."
+  if ! mv -fv "$filename" ~/personal/secretpass/; then
+    echo "Failed to move file"
+    return 1
+  fi
+
+  echo "Cleaning up and pushing to repo..."
+  (
+    cd ~/personal/secretpass || exit 1
+    git add .
+    git commit -m "add $filename to password file"
+    git push
+  ) || {
+    echo "Git operation failed"
+    return 1
+  }
+
+  echo "Done"
+}
+
+alias genpass="generate_password $1"
+
+## Encrypt, put into repository, push to git
+
 # vim dawg
 bindkey -v
 
@@ -153,3 +202,4 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/aircollides/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+#
