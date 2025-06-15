@@ -102,6 +102,16 @@ bindkey -s ^t "~/airutils/tmux-cht.sh\n"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias k='kubectl'
+
+source /etc/bash_completion
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
+#
+# Enable kubectl autocompletion
+source <(kubectl completion zsh)
+# Optional: load completion for alias 'k'
+compdef __start_kubectl k
 
 # bun completions
 [ -s "/home/aircollides/.bun/_bun" ] && source "/home/aircollides/.bun/_bun"
@@ -137,3 +147,9 @@ bindkey '^T' cheat_sheet
 
 ## Starting tmux automatically
 tmux
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/home/aircollides/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

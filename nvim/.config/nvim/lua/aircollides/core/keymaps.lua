@@ -17,9 +17,25 @@ vim.cmd([[
   nnoremap k  kzz
   nnoremap <C-d>  <C-d>zz
   nnoremap <C-u>  <C-u>zz
+  nnoremap { {zz
+  nnoremap } }zz
+  " Jump to next/previous search result and recenter
+  nnoremap n nzz
+  nnoremap N Nzz
 
+  " Jump to top/bottom/middle of file and recenter
+  nnoremap gg ggzz
+  nnoremap G Gzz
+
+" Matching parentheses and recenter
+  nnoremap % %zz
+
+  " Search for word under cursor and recenter
+  nnoremap * *zz
+  nnoremap # #zz
   " nnoremap <C-j> :cnext<CR>
   " nnoremap <C-k> :cprev<CR>
+
   vnoremap <leader>p "_dP
   vnoremap <leader>y "+y
   nnoremap <leader>y "+y
@@ -30,6 +46,17 @@ vim.cmd([[
   nnoremap <silent> ]b :bnext<CR>
   nnoremap <silent> [B :bfirst<CR>
   nnoremap <silent> ]B :blast<CR>
+  cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' :  '%%'
+
+  xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+  xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+  function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+  endfunction
+
   ]])
 local keymap = vim.keymap -- for conciseness
 
