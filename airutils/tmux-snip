@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
-session=$(find  ~/snip -mindepth 1 -maxdepth 1 -type d | fzf)
-session_name=$(basename "$session")
+# session=$(find  ~/snip -mindepth 1 -maxdepth 1 -type d | fzf)
+# session_name=$(basename "$session")
+#
+# if ! tmux hassession -t "$session_name" 2> /dev/null; then
+#   tmux new-session -s "$session_name" -c "$session" -d
+# fi
+#
+# tmux switch-client -t "$session_name"
+# tmux send-keys -t "$session_name" "nvim ." C-m
+# sleep 1  # Wait for nvim to start
+# tmux send-keys -t "$session_name" " " "f" "s"
+#
 
-if ! tmux hassession -t "$session_name" 2> /dev/null; then
-  tmux new-session -s "$session_name" -c "$session" -d
-fi
-
-tmux switch-client -t "$session_name"
-tmux send-keys -t "$session_name" "nvim ." C-m
-sleep 1  # Wait for nvim to start
-tmux send-keys -t "$session_name" " " "f" "s"
+cd ~/snip/
+nvim +Telescope\ live_grep

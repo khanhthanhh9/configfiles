@@ -1,3 +1,6 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 # If you come from bash you might have to change your $PATH.
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -6,7 +9,7 @@ export PATH=~/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="half-life" # set by `omz`
 export TERM="xterm-256color"
 
 # Set list of themes to pick from when loading at random
@@ -69,7 +72,7 @@ export TERM="xterm-256color"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -104,26 +107,22 @@ bindkey -s ^t "~/airutils/tmux-cht.sh\n"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias k='kubectl'
 
-source /etc/bash_completion
-source <(kubectl completion bash)
-complete -o default -F __start_kubectl k
-#
-# Enable kubectl autocompletion
-source <(kubectl completion zsh)
-# Optional: load completion for alias 'k'
-compdef __start_kubectl k
+# # Enable kubectl autocompletion
+# source <(kubectl completion zsh)
+# # Optional: load completion for alias 'k'
+# compdef __start_kubectl k
 
 # bun completions
-[ -s "/home/aircollides/.bun/_bun" ] && source "/home/aircollides/.bun/_bun"
+# [ -s "/home/aircollides/.bun/_bun" ] && source "/home/aircollides/.bun/_bun"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
+# export PATH=$PATH:/usr/local/go/bin
 
 # bindkey ^R history-incremental-search-backward 
 # bindkey ^S history-incremental-search-forward
@@ -135,6 +134,11 @@ tmux_sessionizer() {
 cheat_sheet() {
   ~/airutils/tmux-cht.sh
 }
+
+tmux_snip() {
+  ~/airutils/tmux-snip
+}
+
 
 generate_password() {
   echo "Generate password, please enter the name of the file "
@@ -180,26 +184,30 @@ generate_password() {
 
   echo "Done"
 }
-
 alias genpass="generate_password $1"
 
 ## Encrypt, put into repository, push to git
 
+cfvim() {
+  cd "$HOME/.dotfiles/nvim/.config" || return
+  nvim .
+}
 # vim dawg
 bindkey -v
 
 zle -N tmux_sessionizer
 zle -N cheat_sheet
+zle -N tmux_snip
 
 bindkey '^F' tmux_sessionizer
 bindkey '^T' cheat_sheet
+bindkey '^S' tmux_snip
 
 ## Starting tmux automatically
 tmux
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/aircollides/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-#
