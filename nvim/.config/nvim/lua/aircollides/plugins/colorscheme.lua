@@ -1,8 +1,10 @@
 -- lua/plugins/rose-pine.lua
-return { 
-	"rose-pine/neovim", 
-	name = "rose-pine",
+return {
+	"vague2k/vague.nvim",
 	config = function()
-		vim.cmd("colorscheme rose-pine")
-	end
+		-- NOTE: you do not need to call setup if you don't want to.
+		require("vague").setup({
+			-- optional configuration here
+		})
+	end,
 }

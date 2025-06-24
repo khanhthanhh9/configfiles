@@ -46,6 +46,10 @@ vim.cmd([[
   nnoremap <silent> ]b :bnext<CR>
   nnoremap <silent> [B :bfirst<CR>
   nnoremap <silent> ]B :blast<CR>
+  nnoremap <silent> [c :cprevious<CR>
+  nnoremap <silent> ]c :cnext<CR>
+  nnoremap <silent> [C :cfirst<CR>
+  nnoremap <silent> ]C :clast<CR>
   cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' :  '%%'
 
   xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>

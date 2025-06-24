@@ -192,6 +192,20 @@ cfvim() {
   cd "$HOME/.dotfiles/nvim/.config" || return
   nvim .
 }
+
+ssh_aws_master() {
+  ssh -i "~/.ssh/masternode.pem" ubuntu@ec2-13-211-145-149.ap-southeast-2.compute.amazonaws.com
+}
+
+ssh_aws_worker1() {
+
+  ssh -i "~/.ssh/masternode.pem" ubuntu@ec2-13-239-132-49.ap-southeast-2.compute.amazonaws.com
+}
+
+ssh_aws_worker2() {
+
+  ssh -i "~/.ssh/masternode.pem" ubuntu@ec2-3-106-217-33.ap-southeast-2.compute.amazonaws.com
+}
 # vim dawg
 bindkey -v
 
