@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-session=$(find  ~/usbdrive ~/video/ ~/personal/ ~/work ~/.dotfiles -mindepth 1 -maxdepth 1 -type d | fzf)
+session=$(find ~/video/ ~/personal/ ~/work ~/.dotfiles -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
 session_name=$(basename "$session")
 
-if ! tmux hassession -t "$session_name" 2> /dev/null; then
+if ! tmux hassession -t "$session_name" 2>/dev/null ; then
   tmux new-session -s "$session_name" -c "$session" -d
 fi
 

@@ -193,6 +193,9 @@ cfvim() {
   nvim .
 }
 
+blender() {
+  /home/aircollides/blender-4.4.3/blender&
+}
 ssh_aws_master() {
   ssh -i "~/.ssh/masternode.pem" ubuntu@ec2-13-211-145-149.ap-southeast-2.compute.amazonaws.com
 }
@@ -225,3 +228,6 @@ tmux
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/aircollides/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+export XDG_CONFIG_HOME="$HOME/mydotfiles/config"
+

@@ -41,10 +41,11 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up l
-set $down k
-set $left j
-set $right semicolon
+set $left  h
+set $down  j
+set $up    k
+set $right l
+# set $right semicolon
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
 
@@ -53,7 +54,7 @@ floating_modifier Mod1
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+Return exec ghostty
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -67,16 +68,11 @@ bindsym Mod1+d exec --no-startup-id dmenu_run
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym Mod1+$left focus left
-bindsym Mod1+$down focus down
 bindsym Mod1+$up focus up
 bindsym Mod1+$right focus right
+bindsym Mod1+$left focus left
 
 # alternatively, you can use the cursor keys:
-bindsym Mod1+Left focus left
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
-bindsym Mod1+Right focus right
 
 # move focused window
 bindsym Mod1+Shift+$left move left
@@ -84,17 +80,12 @@ bindsym Mod1+Shift+$down move down
 bindsym Mod1+Shift+$up move up
 bindsym Mod1+Shift+$right move right
 
-# alternatively, you can use the cursor keys:
-bindsym Mod1+Shift+Left move left
-bindsym Mod1+Shift+Down move down
-bindsym Mod1+Shift+Up move up
-bindsym Mod1+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod1+h split h
+# bindsym Mod1+h split h
 
 # split in vertical orientation
-bindsym Mod1+v split v
+# bindsym Mod1+v split v
 
 # enter fullscreen mode for the focused container
 bindsym Mod1+f fullscreen toggle
@@ -200,6 +191,8 @@ mode "resize" {
 }
 
 bindsym Mod1+r mode "resize"
+# Move focus between windows using Alt + h/l
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -248,4 +241,15 @@ bindsym Mod1+Tab exec maim -s | xclip -selection clipboard -t image/png
 # exec --no-startup-id i3-msg "workspace $ws9; exec obs"
 
 exec --no-startup-id sh -c "i3-msg 'workspace $ws1'; brave-browser & sleep 3; i3-msg 'workspace $ws2'; i3-sensible-terminal & sleep 1; i3-msg 'workspace $ws3'; obsidian & sleep 2; i3-msg 'workspace $ws4'; nautilus & sleep 2; i3-msg 'workspace $ws8'; xournalpp & sleep 1; i3-msg 'workspace $ws9'; obs & sleep 2; i3-msg 'workspace $ws5'; anki & sleep 1"
+# Volume controls with Alt+F1/F2/F3
+bindsym Mod1+F1 exec --no-startup-id pactl set-sink-mute 0 toggle       # Alt+F1 = mute/unmute
+bindsym Mod1+F2 exec --no-startup-id pactl set-sink-volume 0 +5%        # Alt+F2 = volume up
+bindsym Mod1+F3 exec --no-startup-id pactl set-sink-volume 0 -5%        # Alt+F3 = volume down
+bindsym Mod1+F4 exec --no-startup-id pactl set-sink-mute 0 0 && pactl set-sink-volume 0 30%
+
+mode "passthrough" {
+    bindsym $mod+Shift+Escape mode "default"
+    # This mode has no bindings, so mod (Alt) does nothing
+}
+bindsym $mod+Escape mode "passthrough"
 
