@@ -27,7 +27,7 @@ export TERM="xterm-256color"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -139,6 +139,15 @@ tmux_snip() {
   ~/airutils/tmux-snip
 }
 
+set_brightness() {
+  local val=$1
+  if ! [[ "$val" =~ ^[0-9]+$ ]]; then
+    echo "Usage: set_brightness <0–100>"
+    return 1
+  fi
+  pkexec ddcutil setvcp 10 "$val"
+}
+
 
 generate_password() {
   echo "Generate password, please enter the name of the file "
@@ -222,6 +231,7 @@ bindkey '^S' tmux_snip
 
 ## Starting tmux automatically
 tmux
+xmodmap ~/.dotfiles/xmod/hjkl
 
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -229,5 +239,6 @@ tmux
 export PATH="/home/aircollides/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-export XDG_CONFIG_HOME="$HOME/mydotfiles/config"
+export PATH="/opt/nvim-linux64/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.dotfiles/nvim/.config" nvim
 

@@ -1,3 +1,5 @@
+bindsym F7 exec --no-startup-id pkexec ddcutil setvcp 10 -10
+bindsym F8 exec --no-startup-id pkexec ddcutil setvcp 10 +10
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -216,6 +218,7 @@ exec_always feh --bg-scale ~/desktopbackground/αέρας.png
 exec --no-startup-id pulseaudio --start
 
 bindsym Mod1+Tab exec maim -s | xclip -selection clipboard -t image/png
+bindsym Mod1+F5 exec --no-startup-id sh -c 'maim | xclip -selection clipboard -t image/png'
 
 # for_window [class="web"] move container to workspace  $ws1; 
 # exec --no-startup-id brave-browser
@@ -245,7 +248,8 @@ exec --no-startup-id sh -c "i3-msg 'workspace $ws1'; brave-browser & sleep 3; i3
 bindsym Mod1+F1 exec --no-startup-id pactl set-sink-mute 0 toggle       # Alt+F1 = mute/unmute
 bindsym Mod1+F2 exec --no-startup-id pactl set-sink-volume 0 +5%        # Alt+F2 = volume up
 bindsym Mod1+F3 exec --no-startup-id pactl set-sink-volume 0 -5%        # Alt+F3 = volume down
-bindsym Mod1+F4 exec --no-startup-id pactl set-sink-mute 0 0 && pactl set-sink-volume 0 30%
+bindsym Mod1+F7 exec --no-startup-id ddcutil setvcp 10 10-
+bindsym Mod1+F8 exec --no-startup-id ddcutil setvcp 10 +10
 
 mode "passthrough" {
     bindsym $mod+Shift+Escape mode "default"
