@@ -74,7 +74,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
-
+source $HOME/.dotfiles/zsh/.nvim-switch.sh
 # User configuration
 bindkey -s ^f "~/airutils/tmux-sessionizer\n"
 bindkey -s ^s "~/airutils/tmux-snip\n"
