@@ -1,5 +1,12 @@
 vim.cmd("let g:netrw_liststyle = 3")
-
+vim.g.vimtex_compiler_latexmk = {
+	options = {
+		"-pdf",
+		"-interaction=nonstopmode",
+		"-synctex=1",
+		"-pvc", -- preview continuously
+	},
+}
 local opt = vim.opt
 
 opt.relativenumber = true

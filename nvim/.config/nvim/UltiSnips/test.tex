@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+
+\title{Sample Lecture Notes}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+This is a simple note-taking setup with \LaTeX.
+
+Here is an inline equation: $E = mc^2$.
+
+And here is a displayed equation:
+\[
+\int_0^\infty e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}
+\]
+
+\section{A Figure with TikZ}
+
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (-0.5,0) -- (3.5,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,3.5) node[above] {$y$};
+  \draw[domain=0:3,smooth,variable=\x,blue] plot ({\x},{\x*\x/3});
+\end{tikzpicture}
+\end{center}
+
+\end{document}
+`
+
