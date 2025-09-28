@@ -59,7 +59,7 @@ tiling_drag modifier titlebar
 bindsym Mod1+Return exec ghostty
 
 # kill focused window
-bindsym Mod1+Shift+q kill
+bindsym Mod1+Shift+d kill
 
 # start dmenu (a program launcher)
 bindsym Mod1+d exec --no-startup-id dmenu_run
@@ -94,8 +94,8 @@ bindsym Mod1+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym Mod1+s layout stacking
-bindsym Mod1+w layout tabbed
-bindsym Mod1+e layout toggle split
+# bindsym Mod1+w layout tabbed
+# bindsym Mod1+e layout toggle split
 
 # toggle tiling / floating
 bindsym Mod1+Shift+space floating toggle
@@ -137,12 +137,12 @@ bindsym Mod1+1 workspace  $ws1; exec feh --bg-fill ~/desktopbackground/1.jpg
 bindsym Mod1+2 workspace  $ws2; exec feh --bg-fill ~/desktopbackground/2.jpg
 bindsym Mod1+3 workspace  $ws3; exec feh --bg-fill ~/desktopbackground/3.jpg
 bindsym Mod1+4 workspace  $ws4; exec feh --bg-fill ~/desktopbackground/4.jpg
-bindsym Mod1+5 workspace  $ws5; exec feh --bg-fill ~/desktopbackground/5.jpg
-bindsym Mod1+6 workspace  $ws6; exec feh --bg-fill ~/desktopbackground/6.jpg
+bindsym Mod1+q workspace  $ws5; exec feh --bg-fill ~/desktopbackground/5.jpg
+bindsym Mod1+w workspace  $ws6; exec feh --bg-fill ~/desktopbackground/6.jpg
 bindsym Mod1+7 workspace  $ws7; exec feh --bg-fill ~/desktopbackground/7.jpg
 bindsym Mod1+8 workspace  $ws8; exec feh --bg-fill ~/desktopbackground/8.jpg
 bindsym Mod1+9 workspace  $ws9; exec feh --bg-fill ~/desktopbackground/9.jpg
-bindsym Mod1+0 workspace  $ws10; exec feh --bg-fill ~/desktopbackground/0.jpg
+bindsym Mod1+e workspace  $ws10; exec feh --bg-fill ~/desktopbackground/0.jpg
 
 
 
@@ -151,12 +151,12 @@ bindsym Mod1+Shift+1 move container to workspace  $ws1
 bindsym Mod1+Shift+2 move container to workspace  $ws2   
 bindsym Mod1+Shift+3 move container to workspace  $ws3    
 bindsym Mod1+Shift+4 move container to workspace  $ws4     
-bindsym Mod1+Shift+5 move container to workspace  $ws5
-bindsym Mod1+Shift+6 move container to workspace  $ws6
+bindsym Mod1+Shift+q move container to workspace  $ws5
+bindsym Mod1+Shift+w move container to workspace  $ws6
 bindsym Mod1+Shift+7 move container to workspace  $ws7
 bindsym Mod1+Shift+8 move container to workspace  $ws8
 bindsym Mod1+Shift+9 move container to workspace  $ws9
-bindsym Mod1+Shift+0 move container to workspace  $ws10
+bindsym Mod1+Shift+e move container to workspace  $ws10
 
 # transparent desktop 
 exec --no-startup-id picom -CGb
@@ -165,7 +165,6 @@ bindsym Mod1+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Mod1+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -211,8 +210,6 @@ bar {
 # ~/.i3/config.
 #
 # Please remove the following exec line:
-#######################################################################
-exec i3-config-wizard
 bindsym Mod1+shift+x exec i3lock 
 exec_always feh --bg-scale ~/desktopbackground/αέρας.png
 exec --no-startup-id pulseaudio --start

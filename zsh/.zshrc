@@ -74,7 +74,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
-source $HOME/.dotfiles/zsh/.nvim-switch.sh
+# source $HOME/.dotfiles/zsh/.nvim-switch.sh
 # User configuration
 bindkey -s ^f "~/airutils/tmux-sessionizer\n"
 bindkey -s ^s "~/airutils/tmux-snip\n"
@@ -137,6 +137,10 @@ cheat_sheet() {
 
 tmux_snip() {
   ~/airutils/tmux-snip
+}
+
+find_video() {
+  ~/airutils/find-video.sh
 }
 
 set_brightness() {
@@ -202,6 +206,15 @@ cfvim() {
   nvim .
 }
 
+airmath() {
+  old_directory="$PWD"
+  cd ~/.dotfiles/latex_template/ || return
+  cp letterfonts.tex macros.tex preamble.tex template.tex "$old_directory"
+  cd "$old_directory" || return
+  nvim template.tex
+}
+
+
 blender() {
   /home/aircollides/blender-4.4.3/blender&
 }
@@ -224,10 +237,12 @@ bindkey -v
 zle -N tmux_sessionizer
 zle -N cheat_sheet
 zle -N tmux_snip
+zle -N find-video
 
 bindkey '^F' tmux_sessionizer
 bindkey '^T' cheat_sheet
 bindkey '^S' tmux_snip
+bindkey '^Y' find_video
 
 ## Starting tmux automatically
 tmux
