@@ -209,6 +209,12 @@ cfvim() {
   nvim .
 }
 
+cfmath() {
+  cd "$HOME/.dotfiles/nvim/Ultisnips" || return
+  nvim tex.snippets
+}
+
+
 airmath() {
   old_directory="$PWD"
   cd ~/.dotfiles/latex_template/ || return
