@@ -143,6 +143,8 @@ bindsym Mod1+7 workspace  $ws7; exec feh --bg-fill ~/desktopbackground/7.jpg
 bindsym Mod1+8 workspace  $ws8; exec feh --bg-fill ~/desktopbackground/8.jpg
 bindsym Mod1+9 workspace  $ws9; exec feh --bg-fill ~/desktopbackground/9.jpg
 bindsym Mod1+e workspace  $ws10; exec feh --bg-fill ~/desktopbackground/0.jpg
+bindsym Mod1+comma workspace back_and_forth
+
 
 
 

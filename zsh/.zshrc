@@ -2,6 +2,9 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 # If you come from bash you might have to change your $PATH.
+#
+set -g xterm-keys on
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=~/usr/bin:/bin:/usr/sbin:/sbin:$PATH
@@ -237,7 +240,7 @@ bindkey -v
 zle -N tmux_sessionizer
 zle -N cheat_sheet
 zle -N tmux_snip
-zle -N find-video
+zle -N find_video
 
 bindkey '^F' tmux_sessionizer
 bindkey '^T' cheat_sheet
@@ -245,8 +248,10 @@ bindkey '^S' tmux_snip
 bindkey '^Y' find_video
 
 ## Starting tmux automatically
-tmux
-xmodmap ~/.dotfiles/xmod/hjkl
+[[ -z "$TMUX" && -n "$DISPLAY" ]] && {
+    tmux
+    xmodmap ~/.dotfiles/xmod/hjkl
+}
 
 # eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
